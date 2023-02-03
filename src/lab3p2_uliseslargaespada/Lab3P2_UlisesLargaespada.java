@@ -78,12 +78,15 @@ public class Lab3P2_UlisesLargaespada {
       System.out.println("Elija que opcion deseas: ");
       System.out.println("1 - Crear una Concensionaria");
       System.out.println("2 - Ver las Concensionarias disponibles");
-      System.out.println("3 - Modificar alguna Concensionaria");
+      System.out.println("3 - Modificar la direccion de alguna Concensionaria");
       System.out.println("4 - Eliminar cualquier Concensionaria");
       System.out.println("5 - Regresar al Menu Principal \n");
 
       System.out.print("Ingrese la opción: ");
       int option = entry.nextInt();
+
+      // Reiniciar scanner
+      entry.nextLine();
 
       switch (option) {
         case 1 -> {
@@ -115,10 +118,43 @@ public class Lab3P2_UlisesLargaespada {
         }
 
         case 3 -> {
+          System.out.println("En esta seccion podras modificar la direccion de una concesionaria");
+
+          if (concesionarias.isEmpty()) {
+            System.out.println("No puedes modificar si no hay para mostrar \n");
+          } else {
+            System.out.print("Seleccione la que deseas modificar: ");
+            
+            listarArrayList(1);
+            
+            int select = entry.nextInt();
+
+            System.out.println("Ahora ingresa su nueva direccion");
+            entry.nextLine();
+            String nuevaDireccion = entry.nextLine();
+            
+            concesionarias.get(select).setDireccion(nuevaDireccion);
+
+            System.out.println("--Concesionaria modificada correctamente--");
+          }
         }
 
         case 4 -> {
-          System.out.println("");
+          System.out.println("En esta seccion podras eliminar concesionarias!");
+          System.out.println("Primero veras la lista de concesionarias para luego seleccionar la que deseas eliminar \n");
+
+          listarArrayList(1);
+
+          if (concesionarias.isEmpty()) {
+            System.out.println("No puedes borrar si no hay para mostrar \n");
+          } else {
+            System.out.print("Seleccione la que deseas eliminar: ");
+            int select = entry.nextInt();
+
+            concesionarias.remove(select);
+
+            System.out.println("--Concesionaria eliminada--");
+          }
         }
 
         case 5 -> {
@@ -157,6 +193,7 @@ public class Lab3P2_UlisesLargaespada {
         }
 
         case 2 -> {
+          listarArrayList(2);
         }
 
         case 3 -> {
@@ -201,6 +238,7 @@ public class Lab3P2_UlisesLargaespada {
         }
 
         case 2 -> {
+          listarArrayList(2);
         }
 
         case 3 -> {
@@ -260,6 +298,8 @@ public class Lab3P2_UlisesLargaespada {
         }
       }
     }
+
+    System.out.println();
   }
 
   // Metodo para la compra/venta por parte de un cliente
