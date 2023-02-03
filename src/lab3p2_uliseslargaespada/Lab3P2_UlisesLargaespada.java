@@ -190,6 +190,24 @@ public class Lab3P2_UlisesLargaespada {
 
       switch (option) {
         case 1 -> {
+          System.out.println("Excelente, vmaos a ingresar un nuevo cliente! \n");
+
+          Cliente nuevoCl = new Cliente();
+
+          System.out.print("Por vavor, indique el nombre del cliente: ");
+          String nombreCl = entry.nextLine();
+          nuevoCl.setNombre(nombreCl);
+
+
+          System.out.print("Para finalizar, cuanto saldo tendrian su cliente: ");
+          float saldo = entry.nextFloat();
+          nuevoCl.setSaldo(saldo);
+
+          // Establecer el Id
+          double id = clientes.size() + 1;
+          nuevoCl.setId(id);
+
+          clientes.add(nuevoCl);
         }
 
         case 2 -> {
@@ -197,9 +215,25 @@ public class Lab3P2_UlisesLargaespada {
         }
 
         case 3 -> {
+          System.out.println("No es posible modificar paramestros a los clientes");
         }
 
         case 4 -> {
+          System.out.println("En esta seccion podras eliminar clientes!");
+          System.out.println("Primero veras la lista de clientes para luego seleccionar la que deseas eliminar \n");
+
+          listarArrayList(2);
+
+          if (concesionarias.isEmpty()) {
+            System.out.println("No puedes borrar si no hay para mostrar \n");
+          } else {
+            System.out.print("Seleccione la que deseas eliminar: ");
+            int select = entry.nextInt();
+
+            concesionarias.remove(select);
+
+            System.out.println("--Concesionaria eliminada--");
+          }
         }
 
         case 5 -> {
