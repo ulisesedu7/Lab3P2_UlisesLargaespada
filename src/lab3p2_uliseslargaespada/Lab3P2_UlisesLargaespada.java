@@ -124,15 +124,15 @@ public class Lab3P2_UlisesLargaespada {
             System.out.println("No puedes modificar si no hay para mostrar \n");
           } else {
             System.out.print("Seleccione la que deseas modificar: ");
-            
+
             listarArrayList(1);
-            
+
             int select = entry.nextInt();
 
             System.out.println("Ahora ingresa su nueva direccion");
             entry.nextLine();
             String nuevaDireccion = entry.nextLine();
-            
+
             concesionarias.get(select).setDireccion(nuevaDireccion);
 
             System.out.println("--Concesionaria modificada correctamente--");
@@ -188,6 +188,9 @@ public class Lab3P2_UlisesLargaespada {
       System.out.print("Ingrese la opción: ");
       int option = entry.nextInt();
 
+      // Reiniciar scanner
+      entry.nextLine();
+
       switch (option) {
         case 1 -> {
           System.out.println("Excelente, vmaos a ingresar un nuevo cliente! \n");
@@ -197,7 +200,6 @@ public class Lab3P2_UlisesLargaespada {
           System.out.print("Por vavor, indique el nombre del cliente: ");
           String nombreCl = entry.nextLine();
           nuevoCl.setNombre(nombreCl);
-
 
           System.out.print("Para finalizar, cuanto saldo tendrian su cliente: ");
           float saldo = entry.nextFloat();
@@ -224,15 +226,15 @@ public class Lab3P2_UlisesLargaespada {
 
           listarArrayList(2);
 
-          if (concesionarias.isEmpty()) {
+          if (clientes.isEmpty()) {
             System.out.println("No puedes borrar si no hay para mostrar \n");
           } else {
-            System.out.print("Seleccione la que deseas eliminar: ");
+            System.out.print("Seleccione al cliente que deseas eliminar: ");
             int select = entry.nextInt();
 
-            concesionarias.remove(select);
+            clientes.remove(select);
 
-            System.out.println("--Concesionaria eliminada--");
+            System.out.println("--Cliente eliminado--");
           }
         }
 
@@ -267,18 +269,116 @@ public class Lab3P2_UlisesLargaespada {
       System.out.print("Ingrese la opción: ");
       int option = entry.nextInt();
 
+      // Reiniciar scanner
+      entry.nextLine();
+
       switch (option) {
         case 1 -> {
+          System.out.println("Ahora vamos a crear un vehiculo");
+
+          System.out.print("Ingrese el color del vehiculo: ");
+          String color = entry.nextLine();
+
+          System.out.print("Ingrese la marca del vehiculo: ");
+          String marca = entry.nextLine();
+
+          System.out.print("Ingrese el anio del vehiculo: ");
+          int year = entry.nextInt();
+
+          System.out.print("Ingrese el precio del vehiculo: ");
+          float precio = entry.nextFloat();
+
+          System.out.println("Selecciones la opcion del numero de llantas");
+          System.out.println("1) Bicicleta o Motocicleta - 2 llantas");
+          System.out.println("2) 4 llantas (Carro, Camion o bus)");
+          int llantas = entry.nextInt();
+
+          if (llantas == 1) {
+            System.out.println("Ahora Seleccione si es una bicicleta o Motocicleta");
+            System.out.println("1 - Bicicleta");
+            System.out.println("2 - Motocicleta");
+            int tipo = entry.nextInt();
+
+            switch (tipo) {
+              case 1 -> {
+                System.out.println("Has seleccionado una bicicleta, ahora selecciona sus parametros");
+
+                // Reiniciar scanner
+                entry.nextLine();
+
+                System.out.print("Ingresa su descripcion: ");
+                String descripcion = entry.nextLine();
+                
+                System.out.print("Ingrese el radio de la rueda: ");
+                float radio = entry.nextFloat();
+                
+                System.out.println("Seleccione su tipo: ");
+                System.out.println("1 - BMX");
+                System.out.println("2 - De Calle");
+                int tipoBici = entry.nextInt();
+                
+                if(tipoBici == 1) {
+                  Bicicleta bicicletaNueva1 = new Bicicleta(descripcion, radio, "BMX", color, marca, year, precio, 2);
+                  vehiculos.add(bicicletaNueva1);
+                } else {
+                  Bicicleta bicicletaNueva2 = new Bicicleta(descripcion, radio, "De Calle", color, marca, year, precio, 2);
+                  vehiculos.add(bicicletaNueva2);
+                }                
+              }
+              
+              case 2 -> {
+                System.out.println("Has seleccionado una motocicleta, ahora selecciona sus parametros");
+                
+                // Reiniciar scanner
+                entry.nextLine();
+                
+                System.out.print("Ingresa el desplazamiento del motor: ");
+                String desMotor = entry.nextLine();
+                
+                System.out.println("Confirme si la motocicleta es electrica o no: ");
+                System.out.println("1 - Si es electrica");
+                System.out.println("2 - No es electrica");
+                int electric = entry.nextInt();
+                
+                boolean check;
+                
+                if(electric == 1) {
+                  check = true;
+                } else {
+                  check = false;
+                }
+                
+                Motocicleta motoNueva = new Motocicleta(desMotor, check, color,  marca, year, precio, 2);
+                vehiculos.add(motoNueva);
+              }
+            }
+          } 
+
         }
 
         case 2 -> {
-          listarArrayList(2);
+          listarArrayList(3);
         }
 
         case 3 -> {
         }
 
         case 4 -> {
+          System.out.println("En esta seccion podras eliminar vechiculos!");
+          System.out.println("Primero veras la lista de vehiculos para luego seleccionar el que deseas eliminar \n");
+
+          listarArrayList(3);
+
+          if (vehiculos.isEmpty()) {
+            System.out.println("No puedes borrar si no hay para mostrar \n");
+          } else {
+            System.out.print("Seleccione el vehiculo que deseas eliminar: ");
+            int select = entry.nextInt();
+
+            vehiculos.remove(select);
+
+            System.out.println("--Vehiculo eliminado--");
+          }
         }
 
         case 5 -> {
