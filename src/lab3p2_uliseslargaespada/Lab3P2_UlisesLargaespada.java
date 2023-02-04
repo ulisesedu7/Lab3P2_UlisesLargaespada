@@ -308,52 +308,126 @@ public class Lab3P2_UlisesLargaespada {
 
                 System.out.print("Ingresa su descripcion: ");
                 String descripcion = entry.nextLine();
-                
+
                 System.out.print("Ingrese el radio de la rueda: ");
                 float radio = entry.nextFloat();
-                
+
                 System.out.println("Seleccione su tipo: ");
                 System.out.println("1 - BMX");
                 System.out.println("2 - De Calle");
                 int tipoBici = entry.nextInt();
-                
-                if(tipoBici == 1) {
+
+                if (tipoBici == 1) {
                   Bicicleta bicicletaNueva1 = new Bicicleta(descripcion, radio, "BMX", color, marca, year, precio, 2);
                   vehiculos.add(bicicletaNueva1);
+
+                  System.out.println("Bicicleta Agregada Exitosamente!");
                 } else {
                   Bicicleta bicicletaNueva2 = new Bicicleta(descripcion, radio, "De Calle", color, marca, year, precio, 2);
                   vehiculos.add(bicicletaNueva2);
-                }                
+                  System.out.println("Bicicleta Agregada Exitosamente!");
+
+                }
               }
-              
+
               case 2 -> {
                 System.out.println("Has seleccionado una motocicleta, ahora selecciona sus parametros");
-                
+
                 // Reiniciar scanner
                 entry.nextLine();
-                
+
                 System.out.print("Ingresa el desplazamiento del motor: ");
                 String desMotor = entry.nextLine();
-                
+
                 System.out.println("Confirme si la motocicleta es electrica o no: ");
                 System.out.println("1 - Si es electrica");
                 System.out.println("2 - No es electrica");
                 int electric = entry.nextInt();
-                
+
                 boolean check;
-                
-                if(electric == 1) {
+
+                if (electric == 1) {
                   check = true;
                 } else {
                   check = false;
                 }
-                
-                Motocicleta motoNueva = new Motocicleta(desMotor, check, color,  marca, year, precio, 2);
+
+                Motocicleta motoNueva = new Motocicleta(desMotor, check, color, marca, year, precio, 2);
                 vehiculos.add(motoNueva);
+                System.out.println("Motocicleta Agregada Exitosamente!");
+
               }
             }
-          } 
+          } else {
+            System.out.println("Ahora selecciona si es Carro, Camion o Bus");
+            System.out.println("1 - Carro");
+            System.out.println("2 - Camion");
+            System.out.println("3 - Bus");
+            int tipo = entry.nextInt();
 
+            switch (tipo) {
+              case 1 -> {
+                System.out.println("Has seleccionado carro, ahora indica sus propiedades");
+
+                System.out.print("Ingrese la cantidad de puertas: ");
+                int puertas = entry.nextInt();
+
+                // Reiniciar scanner
+                entry.nextLine();
+
+                System.out.print("Ingrese la descripcion del motor: ");
+                String desMotor = entry.nextLine();
+
+                System.out.print("Ingrese la velocidad maxima: ");
+                float topSpeed = entry.nextFloat();
+
+                Carro carroNuevo = new Carro(puertas, desMotor, topSpeed, color, marca, year, precio, 4);
+
+                vehiculos.add(carroNuevo);
+                System.out.println("Carro Agregada Exitosamente!");
+              }
+
+              case 2 -> {
+                System.out.println("Has seleccionado camion, ahora indica sus propiedades");
+
+                System.out.print("Ingrese la cantidad de volumen maximo de carga: ");
+                float volMax = entry.nextFloat();
+
+                System.out.print("Ingrese la altura: ");
+                float altura = entry.nextFloat();
+
+                System.out.println("Confirme si tiene retroescavadora o no: ");
+                System.out.println("1 - Si tiene retroescavadora");
+                System.out.println("2 - No tiene retroescavadora");
+                int retro = entry.nextInt();
+
+                boolean check;
+
+                if (retro == 1) {
+                  check = true;
+                } else {
+                  check = false;
+                }
+
+                Camion camionNuevo = new Camion(volMax, altura, check, color, marca, year, precio, 4);
+
+                vehiculos.add(camionNuevo);
+                System.out.println("Camion Agregada Exitosamente!");
+              }
+
+              case 3 -> {
+                System.out.println("Has seleccionado bus, ahora indica sus propiedades");
+
+                System.out.print("Ingrese la cantidad de pasajeros: ");
+                int pasajeros = entry.nextInt();
+
+                Bus busNuevo = new Bus(pasajeros, color, marca, year, precio, 4);
+
+                vehiculos.add(busNuevo);
+                System.out.println("bus Agregada Exitosamente!");
+              }
+            }
+          }
         }
 
         case 2 -> {
