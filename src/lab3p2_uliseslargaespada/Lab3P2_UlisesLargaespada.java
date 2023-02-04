@@ -553,6 +553,12 @@ public class Lab3P2_UlisesLargaespada {
       }
 
       if (vehiculos.get(option) instanceof Camion) {
+        System.out.println("Ahora seleccione las propiedades que quiere modificar: ");
+        System.out.println("1 - Volumen de carga maximo");
+        System.out.println("2 - Altura del camion");
+        System.out.println("3 - Tiene o no escavadora");
+
+        int select = entry.nextInt();
 
       }
 
