@@ -435,6 +435,7 @@ public class Lab3P2_UlisesLargaespada {
         }
 
         case 3 -> {
+          modificacionVehiculos();
         }
 
         case 4 -> {
@@ -508,6 +509,65 @@ public class Lab3P2_UlisesLargaespada {
     }
 
     System.out.println();
+  }
+
+  // Metodo para realizar la modificacion
+  public static void modificacionVehiculos() {
+    System.out.println("En esta opcion usted va a poder realizar la modificacion de los vehiculos");
+    System.out.println("Primero, debe seleccionar los vehiculos disponibles");
+
+    if (vehiculos.isEmpty()) {
+      System.out.println("No hay vehiculos para modificar");
+    } else {
+      System.out.println("Seleccione el vehiculo para modificarlo: ");
+      listarArrayList(3);
+
+      int option = entry.nextInt();
+
+      if (vehiculos.get(option) instanceof Carro) {
+        System.out.println("Ahora seleccione las propiedades que quiere modificar: ");
+        System.out.println("1 - Descripcion del motor");
+        System.out.println("2 - Velocidad maxima");
+
+        int select = entry.nextInt();
+        
+        switch (select) {
+          case 1 -> {
+            System.out.println("Cual seria la nueva descripcion del motor?");
+            
+            // Reiniciar scanner
+            entry.nextLine();
+            
+            String desNuevaMotor = entry.nextLine();
+            
+            ((Carro)vehiculos.get(select)).setDesMotor(desNuevaMotor);            
+          }
+          
+          case 2 -> {
+            System.out.println("Cual seria la nueva velocidad maxima?");
+            float nuevaTopSpeed = entry.nextFloat();
+            
+            ((Carro)vehiculos.get(select)).setTopSpeed(nuevaTopSpeed);   
+          }
+        }        
+      }
+
+      if (vehiculos.get(option) instanceof Camion) {
+
+      }
+
+      if (vehiculos.get(option) instanceof Bus) {
+
+      }
+
+      if (vehiculos.get(option) instanceof Bicicleta) {
+
+      }
+
+      if (vehiculos.get(option) instanceof Motocicleta) {
+
+      }
+    }
   }
 
   // Metodo para la compra/venta por parte de un cliente
